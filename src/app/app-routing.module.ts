@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
 
   // otherwise redirect to home
-  { path: '**', redirectTo: 'register' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

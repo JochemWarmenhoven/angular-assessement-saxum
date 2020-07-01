@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-      return;
+      return false;
     }
     const {
       password,
@@ -61,9 +61,15 @@ export class RegisterComponent implements OnInit {
       lastName: string;
     } = this.registerForm.value;
 
-    if (password.includes(firstName) || password.includes(lastName)) {
-      this.error = 'First name or last name in password is not allowed';
-      return;
+    if (
+      password.includes(firstName.toLowerCase()) ||
+      password.includes(lastName.toLowerCase())
+    ) {
+      // this.error = 'First name or last name in password is not allowed';
+      this.registerForm.controls['password'].setErrors({
+        nameInPassword: true,
+      });
+      return false;
     }
     this.loading = true;
     this.userService

@@ -6,10 +6,15 @@
     <input
       type="text"
       formControlName="firstName"
+      name="firstName"
       class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
     />
-    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+    <div
+      id="firstnameError"
+      *ngIf="submitted && f.firstName.errors"
+      class="invalid-feedback"
+    >
       <div *ngIf="f.firstName.errors.required">First Name is required</div>
     </div>
   </div>
@@ -18,10 +23,15 @@
     <input
       type="text"
       formControlName="lastName"
+      name="lastName"
       class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
     />
-    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+    <div
+      id="lastNameError"
+      *ngIf="submitted && f.lastName.errors"
+      class="invalid-feedback"
+    >
       <div *ngIf="f.lastName.errors.required">Last Name is required</div>
     </div>
   </div>
@@ -30,10 +40,15 @@
     <input
       type="text"
       formControlName="email"
+      name="email"
       class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
     />
-    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+    <div
+      id="emailError"
+      *ngIf="submitted && f.email.errors"
+      class="invalid-feedback"
+    >
       <div *ngIf="f.email.errors.required">E-mail is required</div>
       <div *ngIf="f.email.errors.pattern">Not a valid email</div>
     </div>
@@ -43,11 +58,19 @@
     <input
       type="password"
       formControlName="password"
+      name="password"
       class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
     />
-    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+    <div
+      id="passwordError"
+      *ngIf="submitted && f.password.errors"
+      class="invalid-feedback"
+    >
       <div *ngIf="f.password.errors.required">Password is required</div>
+      <div *ngIf="f.password.errors.nameInPassword">
+        First or last name is in the password
+      </div>
       <div *ngIf="f.password.errors.passwordStrength">
         {{ f.password.errors.passwordStrength }}
       </div>
@@ -57,7 +80,6 @@
     </div>
   </div>
   <div class="form-group">
-    {{ registerForm.status }}
     <button [disabled]="loading" class="btn btn-primary">
       <span
         *ngIf="loading"
@@ -65,6 +87,6 @@
       ></span>
       Register
     </button>
-    <a routerLink="/login" class="btn btn-link">Cancel</a>
+    <a routerLink="/" class="btn btn-link">Cancel</a>
   </div>
 </form>

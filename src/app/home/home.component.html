@@ -1,1 +1,22 @@
-<p>home works!</p>
+<h2>Welcome to the Angular assesment page!</h2>
+<p>
+  This application is integration tested and has some awesome end-to-end testing
+</p>
+<p>
+  You can find the code on
+  <a href="https://github.com/JochemWarmenhoven/angular-assessment-saxum"
+    >github</a
+  >
+</p>
+<p>
+  This application makes a post request to https://demo-api.now.sh when you
+  register and reroutes you back to the home page with a registered param.
+</p>
+<p *ngIf="registered">Thank you for registering!</p>
+
+<a *ngIf="!registered" routerLink="/register" class="btn btn-link"
+  >Click here for registration</a
+>
+<a *ngIf="registered" routerLink="/register" class="btn btn-link"
+  >Click here if you want to register again</a
+>
