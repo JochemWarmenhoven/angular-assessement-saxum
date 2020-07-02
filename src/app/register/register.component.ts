@@ -62,8 +62,8 @@ export class RegisterComponent implements OnInit {
     } = this.registerForm.value;
 
     if (
-      password.includes(firstName.toLowerCase()) ||
-      password.includes(lastName.toLowerCase())
+      password.toLowerCase().includes(firstName.toLowerCase()) ||
+      password.toLowerCase().includes(lastName.toLowerCase())
     ) {
       // this.error = 'First name or last name in password is not allowed';
       this.registerForm.controls['password'].setErrors({
